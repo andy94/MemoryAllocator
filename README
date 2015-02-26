@@ -18,12 +18,12 @@
 	construite pentru comenzile pe care le primeste programul, iar celelalte 
 	2 (modifica() si citire_date()) ajuta la vizualizarea mai clara a modului 
 	de gestionare a	datelor.
-		Un alt aspect important al programului sunt cele doua structuri de date: 
-	COMANDA si BLOC. Prima dintre acestea se refera la comanda pe care o primeste 
-	programul, deoarece retine campurile comenzii, iar cea de-a doua, se refera la 
-	zonele (blocurile) continue de memorie ocupata sau libera si retinerea acestora 
-	intr-un vector. Mai multe detalii referitoare la structurile de date folosite 
-	se gasesc in fisierul sursa.
+		Un alt aspect important al programului sunt cele doua structuri de 
+	date: COMANDA si BLOC. Prima dintre acestea se refera la comanda pe care
+	o primeste programul, deoarece retine campurile comenzii, iar cea de-a 
+	doua, se refera la zonele (blocurile) continue de memorie ocupata sau 
+	libera si retinerea acestora intr-un vector. Mai multe detalii referitoare 
+	la structurile de date folosite se gasesc in fisierul sursa.
 	
 
 			Ideea generala a programului:
@@ -65,17 +65,17 @@
 	FREE <INDEX> si se cauta prin comanda ALLOC <SIZE> un nou index pe care il 
 	afiseaza. De asemenea, se copiaza valorile din vector in arena.
 
-		Comanda SHOW (<FREE>, <USAGE>, <ALLOCATIONS>, <MAP> <LENGTH>) afiseaza datele 
-	specificate in enuntul problemei cu ajutorul unui vector de tip BLOC in care se 
-	retin zonele de memorie (FREE, OCCUPIED) si dimesiunea lor (octeti). Comanda 
-	SHOW MAP se foloseste de functia SHOW_MAP in care am utilizat urmatorul algoritm: 
-	se initializaza vectorul aux de dimensiune N cu valoarea 0 daca bitul este FREE 
-	si 1 in caz contrar, folosindu-se vectorul de date de tip BLOC. In variabila 
-	parte se retine raportul N/length. Evident, daca acesta este mai mare ca 1, 
-	length este mai mic decat N, deci fiecare caracter (* sau .) va reprezenta mai 
-	multi biti sau acelasi de mai multe ori, in caz contrar. Pe scurt, fiecare 
-	caracter reprezinta parte% din biti (unde % e procent). Astfel, se afiseaza 
-	length caractere fiecare avand ponderea parte din biti.
+		Comanda SHOW (<FREE>, <USAGE>, <ALLOCATIONS>, <MAP> <LENGTH>) afiseaza 
+	datele specificate in enuntul problemei cu ajutorul unui vector de tip BLOC 
+	in care se retin zonele de memorie (FREE, OCCUPIED) si dimesiunea lor (octeti). 
+	Comanda SHOW MAP se foloseste de functia SHOW_MAP in care am utilizat urmatorul 
+	algoritm: se initializaza vectorul aux de dimensiune N cu valoarea 0 daca bitul 
+	este FREE si 1 in caz contrar, folosindu-se vectorul de date de tip BLOC. 
+	In variabila parte se retine raportul N/length. Evident, daca acesta este mai 
+	mare ca 1, length este mai mic decat N, deci fiecare caracter (* sau .) 
+	va reprezenta mai multi biti sau acelasi de mai multe ori, in caz contrar. 
+	Pe scurt, fiecare caracter reprezinta parte% din biti (unde % e procent). 
+	Astfel, se afiseaza length caractere fiecare avand ponderea parte din biti.
 
 		Astfel, programul simuleaza functii simple de modificare si de afisare a 
 	informatiilor referitoare la alocarea memoriei.
