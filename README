@@ -1,0 +1,92 @@
+	Ursache Andrei
+
+	----------------------------------------------------------------------------
+	Proiect anul 1, primul semestru, la materia Programarea Calculatoarelor.
+	Subiect: construirea unui alocator de memorie care poate sa aloce, dealoce, 
+	sa mute si sa afiseze memoria.
+	Limbaj ales: C
+	----------------------------------------------------------------------------
+	
+			Aspecte generale:
+
+		Pentru implementarea temei am folosit doua variabile globale: 
+	dimesiunea (int N) a arenei si tabloul unidimensional arena (unsigned char *) 
+	pentru a usura modul de implementare a functiilor. Am ales sa folosesc aceste 
+	doua variabile de tip global, deoarece fiecare functie se foloseste si modifica 
+	sau afiseaza aceste variabile. De asemenea, am folosit 12 functii de citire, 
+	afisare si modificare a datelor. Zece dintre acestea sunt special construite 
+	pentru comenzile pe care le primeste programul, iar celelalte 2 (modifica() 
+	si citire_date()) ajuta la vizualizarea mai clara a modului de gestionare a 
+	datelor.
+		Un alt aspect important al programului sunt cele doua structuri de date: 
+	COMANDA si BLOC. Prima dintre acestea se refera la comanda pe care o primeste 
+	programul, deoarece retine campurile comenzii, iar cea de-a doua, se refera la 
+	zonele (blocurile) continue de memorie ocupata sau libera si retinerea acestora 
+	intr-un vector. Mai multe detalii referitoare la structurile de date folosite 
+	se gasesc in fisierul sursa.
+	
+
+		Ideea generala a programului:
+
+		Programul pe care l-am scris simuleaza functionarea unui alocator de memorie. 
+	Aceasta poate sa primeasca diferite comenzi de alocare, de realocare, de 
+	eliberare etc. si ruleaza pana la primirea comenzii FINALIZE care elibereaza 
+	memoria si incheie programul. Pentru fiecare comanda citita cu ajutorul 
+	functiei citire_comanda() se apeleaza automat functia respectiva, careia i se 
+	transmite prin valoare fiecare camp al comenzii.
+
+		Astfel, prima comanda pe care o primeste programul este INITIALIZE <N>. 
+	Functia asociata aloca dinamic N*sizeof(unsigned char) octeti arenei si seteaza 
+	indexul de start pe 0 prin functia modifica(index,valoare). Aceasta functie se 
+	foloseste de un pointer de tip int* pentru a pune (modifica) in tabloul arena valori 
+	de tip int si este folosita, la randul ei, de mai multe functii din proram.
+	Comanda ALLOCALIGNED <SIZE> <ALIGN> si cazul ei particular, 
+
+		ALLOC <SIZE> (= ALLOCALIGNED <SIZE> 1), cauta o zona de memorie libera de (minim) 
+	SIZE octeti + 12 (partea de gestiune - transparenta utilizatorului). Dar asta nu e 
+	indeajuns. Indexul primului octet de memorie (de la care incepe sectiunea de date) 
+	trebuie sa se imparta exact la align (INDEX%ALIGN == 0). Daca aceste doua conditii 
+	sunt indeplinite, atunci se scrie in arena sectiune de gestiune a noului bloc si se 
+	modifica datele de gestiune a blocurilor vecine (daca acesetea exista). In caz 
+	afirmativ, se afiseaza INDEX, in caz negativ, 0.
+
+		Comanda FILL <INDEX> <SIZE> <VALUE> pune in arena incepand de la INDEX (returnat 
+	anterior de ALLOC sau ALLOCALIGNED) valoare VALUE pentru un numar de SIZE octeti.
+	Comanda FREE <INDEX> elibereaza blocul respectiv de memorie prin modificarea gestiunii 
+	blocurilor vecine.
+
+		Comanda DUMP afiseaza arena in format hexazecimal, utilizand sablonul din enunt.
+	Prin comanda REALLOC <INDEX> <SIZE> se retine intr-un tablou unidimensional valorile 
+	bitilor din sectiunea de date a blocului. Se efectueaza FREE <INDEX> si se cauta 
+	prin comanda ALLOC <SIZE> un nou index pe care il afiseaza. De asemenea, se copiaza 
+	valorile din vector in arena.
+
+		Comanda SHOW (<FREE>, <USAGE>, <ALLOCATIONS>, <MAP> <LENGTH>) afiseaza datele 
+	specificate in enuntul problemei cu ajutorul unui vector de tip BLOC in care se 
+	retin zonele de memorie (FREE, OCCUPIED) si dimesiunea lor (octeti). Comanda 
+	SHOW MAP se foloseste de functia SHOW_MAP in care am utilizat urmatorul algoritm: 
+	se initializaza vectorul aux de dimensiune N cu valoarea 0 daca bitul este FREE 
+	si 1 in caz contrar, folosindu-se vectorul de date de tip BLOC. In variabila 
+	parte se retine raportul N/length. Evident, daca acesta este mai mare ca 1, 
+	length este mai mic decat N, deci fiecare caracter (* sau .) va reprezenta mai 
+	multi biti sau acelasi de mai multe ori, in caz contrar. Pe scurt, fiecare 
+	caracter reprezinta parte% din biti (unde % e procent). Astfel, se afiseaza 
+	length caractere fiecare avand ponderea parte din biti.
+
+		Astfel, programul simuleaza functii simple de modificare si de afisare a 
+	informatiilor referitoare la alocarea memoriei.
+
+		Programul in sine:
+	1. Intr-o bucla while(1) se citeste comanda prin fuctia citire_comanda() si se 
+	retin campurile acesteia.
+	2. Se compara cu strcmp numele acesteia si se apeleaza functia respectiva.
+	3. La intalnirea comenzii FINALIZE se apeleaza functia asociata, se iese din 
+	bucla si se incheie cu succes programul.
+
+	(!)Alte detalii referitoare la implementarea temei se regasesc in fisierul sursa.
+	(!)Unele linii contin mai mult de 80 de caractere din cauza comentariilor pe care nu am vrut sa le fragmentez pentru o intelegere mai clara.
+
+	
+	Andrei Ursache
+
+	
