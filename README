@@ -80,7 +80,9 @@
 		Astfel, programul simuleaza functii simple de modificare si de afisare a 
 	informatiilor referitoare la alocarea memoriei.
 
-		Programul in sine:
+
+			Programul in sine:
+			
 	1. Intr-o bucla while(1) se citeste comanda prin fuctia citire_comanda() si se 
 	retin campurile acesteia.
 	2. Se compara cu strcmp numele acesteia si se apeleaza functia respectiva.
