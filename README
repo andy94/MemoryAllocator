@@ -87,7 +87,8 @@
 	3. La intalnirea comenzii FINALIZE se apeleaza functia asociata, se iese din 
 	bucla si se incheie cu succes programul.
 
-	(!)Alte detalii referitoare la implementarea temei se regasesc in fisierul sursa.
+	(!)Alte detalii referitoare la implementarea temei se regasesc in fisierul 
+	sursa.
 	(!)Unele linii contin mai mult de 80 de caractere din cauza comentariilor pe 
 	care nu am vrut sa le fragmentez pentru o intelegere mai clara.
 
