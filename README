@@ -28,9 +28,9 @@
 
 		Ideea generala a programului:
 
-		Programul pe care l-am scris simuleaza functionarea unui alocator de memorie. 
-	Aceasta poate sa primeasca diferite comenzi de alocare, de realocare, de 
-	eliberare etc. si ruleaza pana la primirea comenzii FINALIZE care elibereaza 
+		Programul pe care l-am scris simuleaza functionarea unui alocator de 
+	memorie. Aceasta poate sa primeasca diferite comenzi de alocare, de realocare, 
+	de eliberare etc. si ruleaza pana la primirea comenzii FINALIZE care elibereaza 
 	memoria si incheie programul. Pentru fiecare comanda citita cu ajutorul 
 	functiei citire_comanda() se apeleaza automat functia respectiva, careia i se 
 	transmite prin valoare fiecare camp al comenzii.
@@ -42,13 +42,14 @@
 	de tip int si este folosita, la randul ei, de mai multe functii din proram.
 	Comanda ALLOCALIGNED <SIZE> <ALIGN> si cazul ei particular, 
 
-		ALLOC <SIZE> (= ALLOCALIGNED <SIZE> 1), cauta o zona de memorie libera de (minim) 
-	SIZE octeti + 12 (partea de gestiune - transparenta utilizatorului). Dar asta nu e 
-	indeajuns. Indexul primului octet de memorie (de la care incepe sectiunea de date) 
-	trebuie sa se imparta exact la align (INDEX%ALIGN == 0). Daca aceste doua conditii 
-	sunt indeplinite, atunci se scrie in arena sectiune de gestiune a noului bloc si se 
-	modifica datele de gestiune a blocurilor vecine (daca acesetea exista). In caz 
-	afirmativ, se afiseaza INDEX, in caz negativ, 0.
+		ALLOC <SIZE> (= ALLOCALIGNED <SIZE> 1), cauta o zona de memorie libera de 
+	(minim) SIZE octeti + 12 (partea de gestiune - transparenta utilizatorului). Dar 
+	asta nu e indeajuns. Indexul primului octet de memorie (de la care incepe 
+	sectiunea de date) trebuie sa se imparta exact la align (INDEX%ALIGN == 0). 
+	Daca aceste doua conditii sunt indeplinite, atunci se scrie in arena sectiune 
+	de gestiune a noului bloc si se modifica datele de gestiune a blocurilor 
+	vecine (daca acesetea exista). In caz afirmativ, se afiseaza INDEX, in caz 
+	negativ, 0.
 
 		Comanda FILL <INDEX> <SIZE> <VALUE> pune in arena incepand de la INDEX (returnat 
 	anterior de ALLOC sau ALLOCALIGNED) valoare VALUE pentru un numar de SIZE octeti.
